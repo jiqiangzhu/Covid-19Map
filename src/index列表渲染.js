@@ -2,7 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// 疫情地图
+//列表渲染
+// class ListItem extends React.Component {
+//     constructor(props) {
+//         super(props);
+//     }
+// }
 function ListItem(props) {
     return (
         <li onClick={props.onClick}>
