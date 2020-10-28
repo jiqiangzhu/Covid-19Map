@@ -1,0 +1,23 @@
+ul li {
+    list-style: none;
+}
+
+ul {
+    
+    margin: 0;
+    /* display: flex; */
+}
+
+li {
+    padding: 5px 5px;
+    display: flex;
+}
+
+li:nth-child(2n-1) {
+    background-color: aliceblue;
+}
+
+span {
+    padding: 5px;
+    flex: 1;
+}
