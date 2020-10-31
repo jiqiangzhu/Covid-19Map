@@ -3,20 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import covidData from './list.json';
 import './my.css';
-import SearchCom from './component/searchCom.js';
-// import App from './App.js'
-
+// import echarts from 'echarts';
+// 引入 ECharts 主模块
 
 let provinceObj = [];
-let provinceObj1 = {};
+
 covidData.data.forEach((item, index) => {
-    provinceObj1[item.province] = {
-        "nowConfirm": item.nowConfirm,
-        "confirmAdd": item.zero,
-        "dead": item.dead,
-        "heal": item.heal,
-        "zero": item.zero
-    }
     provinceObj[index] = {
         "province": item.province,
         "nowConfirm": item.nowConfirm,
@@ -34,16 +26,16 @@ let provinceObjSort = provinceObj.sort((a, b) => {
     }
 })
 let provinceData = [];
-
 let confirmData = [];
 let mydata = [];
 for (let prop in provinceObjSort) {
-
     provinceData.push(provinceObjSort[prop].province);
     confirmData.push(provinceObjSort[prop].zero);
     mydata.push({ name: provinceObjSort[prop].province, value: provinceObjSort[prop].zero })
 }
-
+function randomData() {
+    return Math.round(Math.random() * 500);
+}
 
 let chart = window.echarts.init(document.getElementById('main'));
 let option = {
@@ -100,31 +92,28 @@ class CovidMap extends React.Component {
             <div>
                 <br /><br /><br /><br />
                 {/* <EchartsTest /> */}
-                <SearchCom provinceObj={provinceObj1} />
                 <br /><hr />
                 <h1>中国病例</h1>
-                <div id="map">
-                    <ul>
-                        <li>
-                            <span>地区</span>
-                            <span>确诊</span>
-                            <span>现有确诊</span>
-                            <span>死亡</span>
-                            <span>治愈</span>
-                        </li>
-                        {this.props.list.map((item, index) => {
-                            return (
-                                <li key={index}>
-                                    <span>{item.province}</span>
-                                    <span>{item.zero}</span>
-                                    <span>{item.nowConfirm}</span>
-                                    <span>{item.dead}</span>
-                                    <span>{item.heal}</span>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
+                <ul>
+                    <li>
+                        <span>地区</span>
+                        <span>确诊</span>
+                        <span>现有确诊</span>
+                        <span>死亡</span>
+                        <span>治愈</span>
+                    </li>
+                    {this.props.list.map((item, index) => {
+                        return (
+                            <li key={index}>
+                                <span>{item.province}</span>
+                                <span>{item.zero}</span>
+                                <span>{item.nowConfirm}</span>
+                                <span>{item.dead}</span>
+                                <span>{item.heal}</span>
+                            </li>
+                        )
+                    })}
+                </ul>
             </div>
         )
     }

@@ -21,3 +21,7 @@ span {
     padding: 5px;
     flex: 1;
 }
+#map {
+    width: 600px;
+    height: 800px;
+}
